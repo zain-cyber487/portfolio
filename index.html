@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain Warrior Gamer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 50%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+
+        /* Light Theme Styles */
+        body.light-theme {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            color: #1a1a1a;
+        }
+
+        body.light-theme .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.3);
+        }
+
+        body.light-theme .logo {
+            color: #ff4444;
+        }
+
+        body.light-theme .search-icon {
+            background: rgba(255, 68, 68, 0.1);
+            border: 2px solid #ff4444;
+        }
+
+        body.light-theme .search-bar {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #ff4444;
+            color: #1a1a1a;
+        }
+
+        body.light-theme .search-bar::placeholder {
+            color: rgba(26, 26, 26, 0.5);
+        }
+
+        body.light-theme .hamburger span {
+            background: #ff4444;
+        }
+
+        body.light-theme .side-menu {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.98));
+            border-left: 2px solid rgba(255, 68, 68, 0.3);
+        }
+
+        body.light-theme .menu-item {
+            color: #1a1a1a;
+        }
+
+        body.light-theme .menu-item:hover {
+            background: rgba(255, 68, 68, 0.1);
+            border-color: #ff4444;
+        }
+
+        body.light-theme .hero-section {
+            background: rgba(255, 68, 68, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.2);
+        }
+
+        body.light-theme .hero-subtitle {
+            color: rgba(26, 26, 26, 0.8);
+        }
+
+        body.light-theme .link-block {
+            background: rgba(26, 26, 26, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        body.light-theme .link-block h3 {
+            color: #ff4444;
+        }
+
+        body.light-theme .link-block p {
+            color: rgba(26, 26, 26, 0.8);
+        }
+
+        body.light-theme .modal {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        body.light-theme .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.98));
+            border: 2px solid #ff4444;
+        }
+
+        body.light-theme .modal-body {
+            color: rgba(26, 26, 26, 0.9);
+        }
+
+        body.light-theme .input-field {
+            background: rgba(26, 26, 26, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            color: #1a1a1a;
+        }
+
+        body.light-theme .input-field::placeholder {
+            color: rgba(26, 26, 26, 0.5);
+        }
+
+        body.light-theme .video-card {
+            background: rgba(26, 26, 26, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        body.light-theme .video-card:hover {
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        body.light-theme .video-stats {
+            color: rgba(26, 26, 26, 0.7);
+        }
+
+        body.light-theme .video-date {
+            color: rgba(26, 26, 26, 0.5);
+        }
+
+        body.light-theme .videos-grid {
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            background: rgba(26, 26, 26, 0.02);
+        }
+
+        body.light-theme .toggle-switch {
+            background: rgba(26, 26, 26, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        body.light-theme .toggle-label {
+            color: rgba(26, 26, 26, 0.9);
+        }
+
+        body.light-theme .close-btn {
+            color: #ff4444;
+        }
+
+        body.light-theme .close-btn:hover {
+            background: rgba(255, 68, 68, 0.2);
+        }
+
+        /* Animated Sprinklers */
+        .sprinkler {
+            position: fixed;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff4444, #ff6666, transparent);
+            animation: sprinkle 3s ease-in-out infinite, sprinkleGlow 2s ease-in-out infinite;
+            z-index: 1;
+            border-radius: 2px;
+            filter: blur(0.5px);
+        }
+
+        @keyframes sprinkle {
+            0% {
+                transform: translateY(-100vh) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sprinkleGlow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 68, 68, 0.8), 0 0 25px rgba(255, 68, 68, 0.4);
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff4444;
+            text-decoration: none;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+        }
+
+        .search-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 68, 68, 0.2);
+            border: 2px solid #ff4444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-icon:hover {
+            background: rgba(255, 68, 68, 0.3);
+            transform: scale(1.1);
+        }
+
+        .search-bar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(26, 26, 26, 0.95);
+            border: 2px solid #ff4444;
+            border-radius: 25px;
+            padding: 0 15px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .search-bar.active {
+            width: 300px;
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #ff4444;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Side Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(45, 27, 27, 0.98));
+            backdrop-filter: blur(20px);
+            padding: 80px 30px 30px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 999;
+            border-left: 2px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .menu-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 68, 68, 0.1);
+            border-color: #ff4444;
+            transform: translateX(10px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(255, 68, 68, 0.05);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .yt-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        .yt-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.5);
+        }
+
+        /* Link Blocks Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .link-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-block::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 68, 68, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-block:hover::before {
+            opacity: 1;
+        }
+
+        .link-block:hover {
+            transform: translateY(-5px);
+            border-color: #ff4444;
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.2);
+        }
+
+        .link-block h3 {
+            color: #ff4444;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .link-block p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .link-block {
+            cursor: pointer;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 998;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Popup Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(45, 27, 27, 0.98));
+            border: 2px solid #ff4444;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.7) rotate(10deg);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(255, 68, 68, 0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) rotate(0deg);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .modal-title {
+            color: #ff4444;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ff4444;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 68, 68, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .modal-body h4 {
+            color: #ff6666;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .modal-body li {
+            margin: 0.5rem 0;
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 68, 68, 0.2);
+        }
+
+        .toggle-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .toggle-switch.active {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(26px);
+            background: #fff;
+        }
+
+        .settings-section {
+            margin: 1.5rem 0;
+        }
+
+        .settings-section h4 {
+            color: #ff6666;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 68, 68, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .action-button {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            margin: 0.5rem 0;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #ff4444;
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Video Grid Styles */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-card:hover {
+            transform: translateY(-3px);
+            border-color: #ff4444;
+            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.3);
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #ff4444, #ff6666);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail::before {
+            content: '▶';
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-title {
+            color: #ff6666;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-views {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .video-duration {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .video-category {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(255, 68, 68, 0.8);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .video-date {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .search-bar.active {
+                width: 200px;
+            }
+
+            .side-menu {
+                width: 280px;
+                right: -280px;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Sprinklers -->
+    <div id="sprinklers"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">Zain Warrior</a>
+        
+        <div class="nav-controls">
+            <div class="search-container">
+                <div class="search-icon" onclick="toggleSearch()">
+                    <svg width="20" height="20" fill="#ff4444" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </div>
+                <input type="text" class="search-bar" placeholder="Search..." onblur="closeSearch()">
+            </div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Menu -->
+    <nav class="side-menu">
+        <a href="#" class="menu-item">🏠 Home</a>
+        <a href="#" class="menu-item">🎮 Gaming</a>
+        <a href="#" class="menu-item">📺 Videos</a>
+        <a href="#" class="menu-item">🎯 Tutorials</a>
+        <a href="#" class="menu-item">📱 Social Media</a>
+        <a href="#" class="menu-item">💬 Community</a>
+        <a href="#" class="menu-item">🛍️ Merchandise</a>
+        <a href="#" class="menu-item">📧 Contact</a>
+        <a href="#" class="menu-item">⚙️ Settings</a>
+        <a href="#" class="menu-item">ℹ️ About</a>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" onclick="closeMenu()"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome Gamers!</h1>
+            <p class="hero-subtitle">Join the ultimate gaming experience with Zain Warrior</p>
+            <a href="https://www.youtube.com/@zainwarriorgamer" target="_blank" class="yt-button">
+                🎮 Visit My YouTube Channel
+            </a>
+        </section>
+
+        <div class="links-grid">
+            <div class="link-block" onclick="openModal('gaming-hub')">
+                <h3>🎮 MINECRAFT FOR MOBILE APK!</h3>
+                <p>Download the latest version of Minecraft for mobile and start playing on the Go!</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('video-library')">
+                <h3>📺 Video Library</h3>
+                <p>Access our complete collection of gaming videos, tutorials, and live streams. Never miss an epic moment!</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('tournaments')">
+                <h3>🏆 Tournaments</h3>
+                <p>Join competitive gaming tournaments and showcase your skills. Win prizes and gain recognition in the community.</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('discord')">
+                <h3>💬 Discord Community</h3>
+                <p>Connect with fellow gamers, share strategies, and participate in community events. Build lasting friendships!</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('gaming-gear')">
+                <h3>🛍️ Gaming Gear</h3>
+                <p>Check out recommended gaming equipment, peripherals, and setup guides to enhance your gaming experience.</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('game-guides')">
+                <h3>📚 Game Guides</h3>
+                <p>Comprehensive walkthroughs, tips, and strategies for popular games. Master every level and boss fight!</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('custom-content')">
+                <h3>🎨 Custom Content</h3>
+                <p>Exclusive gaming content, mods, and custom creations. Download unique assets for your favorite games.</p>
+            </div>
+
+            <div class="link-block" onclick="openModal('mobile-gaming')">
+                <h3>📱 Mobile Gaming</h3>
+                <p>Mobile gaming reviews, tips, and the best games for your smartphone. Game anywhere, anytime!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Popup -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Block Details</h3>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedSettings = localStorage.getItem('zainWarriorSettings');
+            if (savedSettings) {
+                const settingsData = JSON.parse(savedSettings);
+                applyThemeSettings(settingsData);
+            }
+        });
+
+        // Apply Theme Settings Function
+        function applyThemeSettings(settingsData) {
+            const body = document.body;
+            const isDarkMode = settingsData['Dark Mode'];
+            
+            if (isDarkMode) {
+                body.classList.remove('light-theme');
+            } else {
+                body.classList.add('light-theme');
+            }
+            
+            // Apply other settings as needed
+            if (settingsData['Animations'] === false) {
+                body.style.setProperty('--animation-duration', '0s');
+            } else {
+                body.style.removeProperty('--animation-duration');
+            }
+        }
+
+        // Create animated sprinklers
+        function createSprinkler() {
+            const sprinkler = document.createElement('div');
+            sprinkler.className = 'sprinkler';
+            sprinkler.style.left = Math.random() * 100 + '%';
+            sprinkler.style.height = Math.random() * 150 + 80 + 'px';
+            sprinkler.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            sprinkler.style.animationDelay = Math.random() * 1 + 's';
+            
+            // Add random variations
+            const variations = ['linear', 'ease-in', 'ease-out', 'ease-in-out'];
+            sprinkler.style.animationTimingFunction = variations[Math.floor(Math.random() * variations.length)];
+            
+            document.getElementById('sprinklers').appendChild(sprinkler);
+
+            setTimeout(() => {
+                sprinkler.remove();
+            }, 6000);
+        }
+
+        // Create sprinklers continuously with smoother intervals
+        setInterval(createSprinkler, 200);
+
+        // Search functionality
+        function toggleSearch() {
+            const searchBar = document.querySelector('.search-bar');
+            const searchIcon = document.querySelector('.search-icon');
+            
+            searchBar.classList.add('active');
+            searchBar.focus();
+            searchIcon.style.opacity = '0';
+        }
+
+        function closeSearch() {
+            setTimeout(() => {
+                const searchBar = document.querySelector('.search-bar');
+                const searchIcon = document.querySelector('.search-icon');
+                
+                if (searchBar.value === '') {
+                    searchBar.classList.remove('active');
+                    searchIcon.style.opacity = '1';
+                }
+            }, 200);
+        }
+
+        // Menu functionality
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const sideMenu = document.querySelector('.side-menu');
+            const overlay = document.querySelector('.overlay');
+            
+            hamburger.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const sideMenu = document.querySelector('.side-menu');
+            const overlay = document.querySelector('.overlay');
+            
+            hamburger.classList.remove('active');
+            sideMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Menu item functionality
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const text = this.textContent.trim();
+                
+                if (text.includes('Home')) {
+                    openMenuModal('home');
+                } else if (text.includes('Gaming')) {
+                    openMenuModal('gaming');
+                } else if (text.includes('Videos')) {
+                    openMenuModal('videos');
+                } else if (text.includes('Tutorials')) {
+                    openMenuModal('tutorials');
+                } else if (text.includes('Social Media')) {
+                    openMenuModal('social');
+                } else if (text.includes('Community')) {
+                    openMenuModal('community');
+                } else if (text.includes('Merchandise')) {
+                    openMenuModal('merchandise');
+                } else if (text.includes('Contact')) {
+                    openMenuModal('contact');
+                } else if (text.includes('Settings')) {
+                    openMenuModal('settings');
+                } else if (text.includes('About')) {
+                    openMenuModal('about');
+                }
+                
+                closeMenu();
+            });
+        });
+
+        // Handle search bar enter key
+        document.querySelector('.search-bar').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert('Search functionality would be implemented here for: ' + this.value);
+                this.blur();
+            }
+        });
+
+        // Menu Modal Data
+        const menuModalData = {
+            'settings': {
+                title: '⚙️ Settings',
+                content: `
+                    <div class="settings-section">
+                        <h4>Display Settings</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Dark Mode</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">High Contrast</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Animations</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Audio Settings</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Sound Effects</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Background Music</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Voice Chat</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Privacy Settings</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Show Online Status</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Allow Friend Requests</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Data Analytics</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Actions</h4>
+                        <button class="action-button" onclick="saveSettings()">Save Settings</button>
+                        <button class="action-button" onclick="alert('Settings reset to default!')">Reset to Default</button>
+                    </div>
+                `
+            },
+            'home': {
+                title: '🏠 Home Dashboard',
+                content: `
+                    <div class="settings-section">
+                        <h4>Quick Stats</h4>
+                        <p>Welcome back! Here's your gaming overview:</p>
+                        <ul>
+                            <li>Games Played Today: 3</li>
+                            <li>Total Play Time: 2h 45m</li>
+                            <li>Current Rank: Gold III</li>
+                            <li>Friends Online: 12</li>
+                        </ul>
+                        <button class="action-button" onclick="alert('Refreshing dashboard...')">Refresh Stats</button>
+                        <button class="action-button" onclick="alert('Opening game launcher...')">Quick Play</button>
+                    </div>
+                `
+            },
+            'gaming': {
+                title: '🎮 Gaming Center',
+                content: `
+                    <div class="settings-section">
+                        <h4>Game Library</h4>
+                        <p>Manage your gaming experience:</p>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Auto-Launch Games</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Game Notifications</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Opening game store...')">Browse Games</button>
+                        <button class="action-button" onclick="alert('Checking for updates...')">Update Games</button>
+                    </div>
+                `
+            },
+            'videos': {
+                title: '📺 Video Manager',
+                content: `
+                    <div class="settings-section">
+                        <h4>Video Preferences</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Auto-Play Videos</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">HD Quality</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Subtitles</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="showMyVideos()">My Videos</button>
+                        <button class="action-button" onclick="alert('Starting upload...')">Upload Video</button>
+                    </div>
+                    
+                    <div id="video-library" style="display: none;">
+                        <div class="settings-section">
+                            <h4>🎮 Zain Warrior Gaming Channel Videos</h4>
+                            <div style="margin-bottom: 1rem;">
+                                <input type="text" class="input-field" id="video-search" placeholder="Search videos..." onkeyup="filterVideos()" style="margin-bottom: 0.5rem;">
+                                <select class="input-field" id="video-filter" onchange="filterVideos()" style="margin-bottom: 1rem;">
+                                    <option value="all">All Videos</option>
+                                    <option value="gameplay">Gameplay</option>
+                                    <option value="tutorial">Tutorials</option>
+                                    <option value="review">Reviews</option>
+                                    <option value="live">Live Streams</option>
+                                </select>
+                            </div>
+                            <div id="videos-grid" class="videos-grid">
+                                <!-- Videos will be loaded here -->
+                            </div>
+                            <button class="action-button" onclick="loadMoreVideos()">Load More Videos</button>
+                            <button class="action-button" onclick="hideMyVideos()">← Back to Settings</button>
+                        </div>
+                    </div>
+                `
+            },
+            'tutorials': {
+                title: '🎯 Tutorial Center',
+                content: `
+                    <div class="settings-section">
+                        <h4>Learning Preferences</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Beginner Mode</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Progress Tracking</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Opening tutorial library...')">Browse Tutorials</button>
+                        <button class="action-button" onclick="alert('Checking progress...')">My Progress</button>
+                    </div>
+                `
+            },
+            'social': {
+                title: '📱 Social Media Hub',
+                content: `
+                    <div class="settings-section">
+                        <h4>Social Settings</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Auto-Share Achievements</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Social Notifications</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Opening social feed...')">View Feed</button>
+                        <button class="action-button" onclick="alert('Creating post...')">New Post</button>
+                    </div>
+                `
+            },
+            'community': {
+                title: '💬 Community Hub',
+                content: `
+                    <div class="settings-section">
+                        <h4>Community Settings</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Join Public Rooms</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Event Notifications</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Opening community chat...')">Join Chat</button>
+                        <button class="action-button" onclick="alert('Viewing events...')">Upcoming Events</button>
+                    </div>
+                `
+            },
+            'merchandise': {
+                title: '🛍️ Merchandise Store',
+                content: `
+                    <div class="settings-section">
+                        <h4>Shopping Preferences</h4>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Sale Notifications</span>
+                            <div class="toggle-switch active" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Wishlist Alerts</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Opening store...')">Browse Store</button>
+                        <button class="action-button" onclick="alert('Viewing cart...')">My Cart</button>
+                    </div>
+                `
+            },
+            'contact': {
+                title: '📧 Contact Center',
+                content: `
+                    <div class="settings-section">
+                        <h4>Contact Information</h4>
+                        <input type="text" class="input-field" placeholder="Your Name" />
+                        <input type="email" class="input-field" placeholder="Your Email" />
+                        <input type="text" class="input-field" placeholder="Subject" />
+                        <textarea class="input-field" rows="4" placeholder="Your Message"></textarea>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Email Updates</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Message sent successfully!')">Send Message</button>
+                        <button class="action-button" onclick="alert('Opening support chat...')">Live Chat</button>
+                    </div>
+                `
+            },
+            'about': {
+                title: 'ℹ️ About Zain Warrior',
+                content: `
+                    <div class="settings-section">
+                        <h4>About This Platform</h4>
+                        <p>Welcome to Zain Warrior Gaming - your ultimate gaming destination!</p>
+                        <ul>
+                            <li>Version: 2.1.0</li>
+                            <li>Last Updated: December 2024</li>
+                            <li>Total Users: 50,000+</li>
+                            <li>Games Supported: 500+</li>
+                        </ul>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Beta Features</span>
+                            <div class="toggle-switch" onclick="toggleSetting(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <button class="action-button" onclick="alert('Checking for updates...')">Check Updates</button>
+                        <button class="action-button" onclick="alert('Opening changelog...')">What\'s New</button>
+                    </div>
+                `
+            }
+        };
+
+        // Modal functionality
+        const modalData = {
+            'gaming-hub': {
+                title: '🎮 MINECRAFT FOR MOBILE',
+                content: `
+                    <h4>MINECRAFT APK!</h4>
+                    <p>Download the latest version of Minecraft for mobile and start playing on the Go!</p>
+                    <ul> 
+                        
+                        <a href="https://mcpedl.org/uploads_files/07-06-2022/minecraft-1-17-10.apk">
+                        <li>MINECRAFT V.1.17.10</li>
+                        <a>
+                        <li>Exclusive gameplay footage</li>
+                        <li>Pro gaming tips and strategies</li>
+                        <li>Community discussions and forums</li>
+                        <li>Weekly gaming challenges</li>
+                    </ul>
+                    <h4>Featured Content:</h4>
+                    <p>Check out our latest reviews of trending games, watch epic gameplay moments, and join discussions with fellow gamers from around the world.</p>
+                `
+            },
+            'video-library': {
+                title: '📺 Video Library',
+                content: `
+                    <h4>Complete Video Collection</h4>
+                    <p>Access thousands of hours of gaming content including:</p>
+                    <ul>
+                        <li>Full game playthroughs</li>
+                        <li>Speed runs and challenges</li>
+                        <li>Tutorial series for beginners</li>
+                        <li>Live stream recordings</li>
+                        <li>Behind-the-scenes content</li>
+                    </ul>
+                    <h4>Categories:</h4>
+                    <p>Browse by genre, platform, or difficulty level. New videos added daily!</p>
+                `
+            },
+            'tournaments': {
+                title: '🏆 Tournaments',
+                content: `
+                    <h4>Competitive Gaming Events</h4>
+                    <p>Join our exciting tournament series:</p>
+                    <ul>
+                        <li>Weekly mini-tournaments</li>
+                        <li>Monthly championship events</li>
+                        <li>Seasonal grand tournaments</li>
+                        <li>Special themed competitions</li>
+                        <li>Prize pools up to $10,000</li>
+                    </ul>
+                    <h4>How to Participate:</h4>
+                    <p>Register through our platform, practice in training modes, and compete against players worldwide for amazing prizes and recognition.</p>
+                `
+            },
+            'discord': {
+                title: '💬 Discord Community',
+                content: `
+                    <h4>Join Our Gaming Community</h4>
+                    <p>Connect with over 50,000 active gamers:</p>
+                    <ul>
+                        <li>Real-time chat channels</li>
+                        <li>Voice channels for team play</li>
+                        <li>Game-specific discussion rooms</li>
+                        <li>LFG (Looking for Group) channels</li>
+                        <li>Community events and giveaways</li>
+                    </ul>
+                    <h4>Community Features:</h4>
+                    <p>Share screenshots, get help with difficult levels, find teammates, and participate in community challenges.</p>
+                `
+            },
+            'gaming-gear': {
+                title: '🛍️ Gaming Gear',
+                content: `
+                    <h4>Recommended Gaming Equipment</h4>
+                    <p>Enhance your gaming experience with top-tier gear:</p>
+                    <ul>
+                        <li>High-performance gaming keyboards</li>
+                        <li>Precision gaming mice and mousepads</li>
+                        <li>Professional gaming headsets</li>
+                        <li>4K gaming monitors</li>
+                        <li>Ergonomic gaming chairs</li>
+                    </ul>
+                    <h4>Setup Guides:</h4>
+                    <p>Learn how to optimize your gaming setup for maximum performance and comfort with our detailed guides.</p>
+                `
+            },
+            'game-guides': {
+                title: '📚 Game Guides',
+                content: `
+                    <h4>Comprehensive Game Walkthroughs</h4>
+                    <p>Master every game with our detailed guides:</p>
+                    <ul>
+                        <li>Step-by-step walkthroughs</li>
+                        <li>Boss fight strategies</li>
+                        <li>Hidden secrets and easter eggs</li>
+                        <li>Achievement/trophy guides</li>
+                        <li>Character builds and loadouts</li>
+                    </ul>
+                    <h4>Popular Guides:</h4>
+                    <p>From indie gems to AAA blockbusters, we cover all the games you love with expert strategies and tips.</p>
+                `
+            },
+            'custom-content': {
+                title: '🎨 Custom Content',
+                content: `
+                    <h4>Exclusive Gaming Content</h4>
+                    <p>Download unique content created by our community:</p>
+                    <ul>
+                        <li>Custom game modifications</li>
+                        <li>Player-created maps and levels</li>
+                        <li>Character skins and cosmetics</li>
+                        <li>Sound packs and music</li>
+                        <li>Texture packs and visual mods</li>
+                    </ul>
+                    <h4>Creator Program:</h4>
+                    <p>Submit your own creations and earn recognition in our community. Top creators get featured and rewarded!</p>
+                `
+            },
+            'mobile-gaming': {
+                title: '📱 Mobile Gaming',
+                content: `
+                    <h4>Gaming On-the-Go</h4>
+                    <p>Discover the best mobile gaming experience:</p>
+                    <ul>
+                        <li>Top mobile game recommendations</li>
+                        <li>iOS and Android game reviews</li>
+                        <li>Mobile gaming accessories</li>
+                        <li>Cloud gaming solutions</li>
+                        <li>Cross-platform gaming tips</li>
+                    </ul>
+                    <h4>Featured Games:</h4>
+                    <p>From casual puzzle games to competitive mobile esports, find your next favorite mobile game with our expert recommendations.</p>
+                `
+            }
+        };
+
+        function openModal(blockId) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            
+            const data = modalData[blockId];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = data.content;
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Menu Modal Functions
+        function openMenuModal(menuId) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            
+            const data = menuModalData[menuId];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = data.content;
+                modal.classList.add('active');
+                
+                // Load saved settings when opening settings modal
+                if (menuId === 'settings') {
+                    setTimeout(loadSettings, 100);
+                }
+            }
+        }
+
+        // Toggle Setting Function
+        function toggleSetting(toggleElement) {
+            toggleElement.classList.toggle('active');
+            const label = toggleElement.parentElement.querySelector('.toggle-label').textContent;
+            const isActive = toggleElement.classList.contains('active');
+            
+            // Add a subtle feedback
+            toggleElement.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                toggleElement.style.transform = 'scale(1)';
+            }, 150);
+            
+            console.log(`${label} is now ${isActive ? 'enabled' : 'disabled'}`);
+        }
+
+        // Save Settings Function
+        function saveSettings() {
+            const settingsData = {};
+            
+            // Collect all toggle states
+            const toggles = document.querySelectorAll('.toggle-switch');
+            toggles.forEach(toggle => {
+                const label = toggle.parentElement.querySelector('.toggle-label').textContent;
+                const isActive = toggle.classList.contains('active');
+                settingsData[label] = isActive;
+            });
+            
+            // Collect input field values
+            const inputs = document.querySelectorAll('.input-field');
+            inputs.forEach(input => {
+                if (input.placeholder && input.value) {
+                    settingsData[input.placeholder] = input.value;
+                }
+            });
+            
+            // Apply theme changes immediately
+            applyThemeSettings(settingsData);
+            
+            // Save to localStorage
+            localStorage.setItem('zainWarriorSettings', JSON.stringify(settingsData));
+            
+            // Show success animation
+            const saveButton = event.target;
+            const originalText = saveButton.textContent;
+            
+            saveButton.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+            saveButton.textContent = '✓ Saved!';
+            saveButton.style.transform = 'scale(1.05)';
+            
+            setTimeout(() => {
+                saveButton.style.background = 'linear-gradient(45deg, #ff4444, #ff6666)';
+                saveButton.textContent = originalText;
+                saveButton.style.transform = 'scale(1)';
+            }, 2000);
+            
+            // Show detailed save confirmation
+            const savedSettings = Object.keys(settingsData).length;
+            const enabledSettings = Object.values(settingsData).filter(val => val === true).length;
+            
+            setTimeout(() => {
+                alert(`Settings Saved Successfully!\n\n📊 Total Settings: ${savedSettings}\n✅ Enabled: ${enabledSettings}\n❌ Disabled: ${savedSettings - enabledSettings}\n\n💾 Your preferences have been saved locally and will persist across sessions.`);
+            }, 500);
+            
+            console.log('Settings saved:', settingsData);
+        }
+
+        // Load Settings Function
+        function loadSettings() {
+            const savedSettings = localStorage.getItem('zainWarriorSettings');
+            if (savedSettings) {
+                const settingsData = JSON.parse(savedSettings);
+                
+                // Apply theme settings immediately
+                applyThemeSettings(settingsData);
+                
+                // Apply toggle states
+                const toggles = document.querySelectorAll('.toggle-switch');
+                toggles.forEach(toggle => {
+                    const label = toggle.parentElement.querySelector('.toggle-label').textContent;
+                    if (settingsData.hasOwnProperty(label)) {
+                        if (settingsData[label]) {
+                            toggle.classList.add('active');
+                        } else {
+                            toggle.classList.remove('active');
+                        }
+                    }
+                });
+                
+                // Apply input field values
+                const inputs = document.querySelectorAll('.input-field');
+                inputs.forEach(input => {
+                    if (input.placeholder && settingsData[input.placeholder]) {
+                        input.value = settingsData[input.placeholder];
+                    }
+                });
+                
+                console.log('Settings loaded:', settingsData);
+            }
+        }
+
+        // Video Library Data
+        let allVideos = [
+            {
+                id: 1,
+                title: "",
+                category: "gameplay",
+                views: "125K",
+                duration: "15:32",
+                date: "2 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 2,
+                title: "How to Build Like a PRO in Fortnite - Complete Tutorial",
+                category: "tutorial",
+                views: "89K",
+                duration: "12:45",
+                date: "5 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 3,
+                title: "Call of Duty Warzone - Best Loadouts for Season 6",
+                category: "review",
+                views: "156K",
+                duration: "18:20",
+                date: "1 week ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 4,
+                title: "LIVE: Playing with Subscribers - Join the Fun!",
+                category: "live",
+                views: "67K",
+                duration: "2:15:30",
+                date: "3 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 5,
+                title: "Apex Legends - Insane 4K Damage Game with Wraith",
+                category: "gameplay",
+                views: "203K",
+                duration: "22:15",
+                date: "1 week ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 6,
+                title: "Valorant Aim Training - Improve Your Accuracy Fast",
+                category: "tutorial",
+                views: "94K",
+                duration: "16:40",
+                date: "4 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 7,
+                title: "Minecraft Hardcore Survival - Episode 15: The Nether",
+                category: "gameplay",
+                views: "178K",
+                duration: "28:55",
+                date: "6 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 8,
+                title: "Gaming Setup Tour 2024 - My Complete Battle Station",
+                category: "review",
+                views: "312K",
+                duration: "14:25",
+                date: "2 weeks ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 9,
+                title: "Rocket League - Road to Grand Champion Rank",
+                category: "gameplay",
+                views: "145K",
+                duration: "19:30",
+                date: "1 week ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 10,
+                title: "LIVE: Q&A Session + Gameplay with Chat",
+                category: "live",
+                views: "88K",
+                duration: "1:45:20",
+                date: "5 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 11,
+                title: "Among Us with Friends - Hilarious Moments Compilation",
+                category: "gameplay",
+                views: "267K",
+                duration: "21:10",
+                date: "1 week ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            },
+            {
+                id: 12,
+                title: "Best Gaming Headsets Under $100 - Full Review",
+                category: "review",
+                views: "134K",
+                duration: "13:45",
+                date: "3 days ago",
+                url: "https://www.youtube.com/@zainwarriorgamer"
+            }
+        ];
+
+        let displayedVideos = 6;
+        let filteredVideos = [...allVideos];
+
+        // Show My Videos Function
+        function showMyVideos() {
+            const videoLibrary = document.getElementById('video-library');
+            const settingsSection = videoLibrary.previousElementSibling;
+            
+            settingsSection.style.display = 'none';
+            videoLibrary.style.display = 'block';
+            
+            displayedVideos = 6;
+            filteredVideos = [...allVideos];
+            renderVideos();
+        }
+
+        // Hide My Videos Function
+        function hideMyVideos() {
+            const videoLibrary = document.getElementById('video-library');
+            const settingsSection = videoLibrary.previousElementSibling;
+            
+            videoLibrary.style.display = 'none';
+            settingsSection.style.display = 'block';
+        }
+
+        // Render Videos Function
+        function renderVideos() {
+            const videosGrid = document.getElementById('videos-grid');
+            if (!videosGrid) return;
+            
+            const videosToShow = filteredVideos.slice(0, displayedVideos);
+            
+            videosGrid.innerHTML = videosToShow.map(video => `
+                <div class="video-card" onclick="openVideo('${video.url}')">
+                    <div class="video-category">${video.category.toUpperCase()}</div>
+                    <div class="video-thumbnail">
+                        <div class="video-duration">${video.duration}</div>
+                    </div>
+                    <div class="video-title">${video.title}</div>
+                    <div class="video-stats">
+                        <div class="video-views">
+                            <span>👁</span>
+                            <span>${video.views} views</span>
+                        </div>
+                    </div>
+                    <div class="video-date">${video.date}</div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Videos Function
+        function filterVideos() {
+            const searchTerm = document.getElementById('video-search')?.value.toLowerCase() || '';
+            const categoryFilter = document.getElementById('video-filter')?.value || 'all';
+            
+            filteredVideos = allVideos.filter(video => {
+                const matchesSearch = video.title.toLowerCase().includes(searchTerm);
+                const matchesCategory = categoryFilter === 'all' || video.category === categoryFilter;
+                return matchesSearch && matchesCategory;
+            });
+            
+            displayedVideos = 6;
+            renderVideos();
+        }
+
+        // Load More Videos Function
+        function loadMoreVideos() {
+            displayedVideos += 6;
+            renderVideos();
+            
+            if (displayedVideos >= filteredVideos.length) {
+                const loadMoreBtn = document.querySelector('button[onclick="loadMoreVideos()"]');
+                if (loadMoreBtn) {
+                    loadMoreBtn.textContent = 'All Videos Loaded';
+                    loadMoreBtn.disabled = true;
+                    loadMoreBtn.style.opacity = '0.5';
+                }
+            }
+        }
+
+        // Open Video Function
+        function openVideo(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97eed81645d05952',t:'MTc1Nzg0MjAwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
